@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#main{
+	width:750px; 
+	height:500px;
+	margin:0 auto;	
+}
+
+#userinput{
+	margin-top:25px;
+	padding:20px;
+	background-color:rgb(253,246,230);
+	width:415px; 
+	height:220px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(197,193,190);
+}
+
+#colorinput{
+	border-style: solid;
+	border-width: 1px;
+	width:70px;
+	padding-bottom:10px;
+	text-align: center;
+	display:inline-block;
+	margin:0px 10px 13px 0px;
+	padding:0px 0px 15px 1px;
+	border-color: rgb(197,193,190);
+}
+
+#colorinputcontrol{
+	display:inline-block;
+	margin:0px 0px 13px 0px;
+	width:130px;
+}
+
+#displaysection{
+	width:370px;
+	height:50px;
+}
+
+p{
+	font-size:18px;
+}
+
+strong{
+	font-size:20px;
+	
+}

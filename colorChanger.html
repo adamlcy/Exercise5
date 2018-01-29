@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML 5 Color Picker</title>
+
+<link href="webStorage_Style.css" type="text/css" rel="stylesheet" />
+
+<script>
+window.addEventListener("load",init);
+
+function init(){
+
+	let displayButton=document.getElementById("displayBtn");
+	let clearButton=document.getElementById("clearBtn");
+	
+	displayButton.addEventListener("click",displayColor);
+	clearButton.addEventListener("click",clearColor);
+	
+}
+
+function displayColor(){
+
+	let textRed = document.getElementById("decRed").value;
+	let textGreen = document.getElementById("decGreen").value;
+	let textBlue = document.getElementById("decBlue").value;
+	
+	let decimalRed = parseInt(textRed);
+	let decimalGreen = parseInt(textGreen);
+	let decimalBlue = parseInt(textBlue);
+	
+	if(isNaN(decimalRed) || isNaN(decimalGreen) || isNaN(decimalBlue)){
+		clearColor();
+		alert("Please enter decimal numbers in the color input boxes!");
+	}
+	else if(decimalRed<0 || decimalRed>255 ||decimalGreen<0 || decimalGreen>255 ||decimalBlue<0 || decimalBlue>255){
+		clearColor();
+		alert("Decimal numbers in the color input boxes has to be in range [0,255] !");
+	}
+	else{
+		let displaySection = document.getElementById("displaysection");
+		displaySection.style.backgroundColor = "rgb("+decimalRed+","+decimalGreen+","+decimalBlue+")";
+		let textHexColor = document.getElementById("hexColor");
+		let hexRed = decimalRed.toString(16);
+		let hexGreen = decimalGreen.toString(16);
+		let hexBlue = decimalBlue.toString(16);
+		if(decimalRed < 16){
+			hexRed = "0"+hexRed;
+		}
+		if(decimalGreen < 16){
+			hexGreen = "0" + hexGreen;
+		}
+		if(decimalBlue < 16){
+			hexBlue = "0"+hexBlue;
+		}
+		
+		textHexColor.innerHTML = "Hex value for color: #"+hexRed+hexGreen+hexBlue;
+	}
+	
+}
+
+function clearColor(){
+	document.getElementById("decRed").value = "";
+	document.getElementById("decGreen").value="";
+	document.getElementById("decBlue").value="";
+	document.getElementById("displaysection").style.backgroundColor = "rgb(253,246,230)";
+	document.getElementById("hexColor").innerHTML= "Hex value for color: ";
+	
+}
+
+</script>
+</head>
+
+<body>
+<div id="main">
+
+	<section id="userinput">
+    <strong>CSS Color Displayer</strong>
+	<p>Select a number from 0 to 255 for each color value:</p>
+
+    <form>
+	
+	<div id="colorinput">
+    <div>Red: <br />
+	<input type="input" id="decRed" size="3"></div>
+    </div>
+	
+	<div id="colorinput">
+	
+    <div>Green:<br />
+	<input type="input" id="decGreen" size="3"></div>
+	</div>
+    
+	<div id="colorinput">
+	<div>Blue:<br />
+	<input type="input" id="decBlue" size="3"></div>
+    </div>
+	
+	<div id="colorinputcontrol">
+	 <input type="button" id="displayBtn" value="Show me the color!">
+	 <input type="button" id="clearBtn" value="Clear all">
+	</div>
+    
+	<div id="displaysection">
+	</div>
+	
+	<div id="hexColor">Hex value for color:	</div>
+	
+	</form>
+    </section>
+    
+</div>
+
+
+
+</body>
+</html>
